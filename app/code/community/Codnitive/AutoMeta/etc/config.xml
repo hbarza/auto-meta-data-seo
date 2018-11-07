@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * CODNITIVE
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE_EULA.html.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.codnitive.com/en/terms-of-service-softwares/
+ * http://www.codnitive.com/fa/terms-of-service-softwares/
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   Codnitive
+ * @package    Codnitive_AutoMeta
+ * @author     Hassan Barza <support@codnitive.com>
+ * @copyright  Copyright (c) 2012 CODNITIVE Co. (http://www.codnitive.com)
+ * @license    http://www.codnitive.com/en/terms-of-service-softwares/ End User License Agreement (EULA 1.0)
+ */
+-->
+
+<config>
+	<modules>
+		<Codnitive_AutoMeta>
+			<version>1.0.02</version>
+			<title>Auto Meta Data SEO</title>
+			<link><![CDATA[http://www.codnitive.com/]]></link>
+			<codPool>community</codPool>
+		</Codnitive_AutoMeta>
+	</modules>
+	<global>
+		<helpers>
+			<autometa>
+				<class>Codnitive_AutoMeta_Helper</class>
+			</autometa>
+		</helpers>
+		<models>
+			<autometa>
+				<class>Codnitive_AutoMeta_Model</class>
+			</autometa>
+		</models>
+	</global>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<Codnitive_AutoMeta>
+					<files>
+						<default>Codnitive_AutoMeta.csv</default>
+					</files>
+				</Codnitive_AutoMeta>
+			</modules>
+		</translate>
+		<events>
+			<catalog_product_prepare_save>
+				<observers>
+					<autometa>
+						<type>model</type>
+						<class>autometa/observer_prepare_save_catalog_product</class>
+						<method>productSaveBefore</method>
+					</autometa>
+				</observers>
+			</catalog_product_prepare_save>
+			<catalog_category_prepare_save>
+				<observers>
+					<autometa>
+						<type>model</type>
+						<class>autometa/observer_prepare_save_catalog_category</class>
+						<method>categorySaveBefore</method>
+					</autometa>
+				</observers>
+			</catalog_category_prepare_save>
+			<cms_page_prepare_save>
+				<observers>
+					<autometa>
+						<type>model</type>
+						<class>autometa/observer_prepare_save_cms_page</class>
+						<method>cmsPageSaveBefore</method>
+					</autometa>
+				</observers>
+			</cms_page_prepare_save>
+		</events>
+	</adminhtml>
+
+	<default>
+		<codnitiveseo>
+			<autometa>
+				<active>0</active>
+				<chkfrq>518400</chkfrq>
+				<frtrn>1</frtrn>
+			</autometa>
+
+			<autometa_product_meta>
+				<auto_fill>0</auto_fill>
+				<fill_type>just_empty</fill_type>
+				<meta_title>name</meta_title>
+				<attr_title>name</attr_title>
+				<separator> - </separator>
+				<length>255</length>
+				<static_pos>no</static_pos>
+
+				<key_auto_fill>0</key_auto_fill>
+				<key_fill_type>just_empty</key_fill_type>
+				<attr_key>name</attr_key>
+				<key_separator>,</key_separator>
+				<key_length>0</key_length>
+				<key_static_pos>no</key_static_pos>
+
+				<desc_auto_fill>0</desc_auto_fill>
+				<desc_fill_type>just_empty</desc_fill_type>
+				<meta_desc>short_description</meta_desc>
+				<attr_desc>short_description</attr_desc>
+				<desc_separator>, </desc_separator>
+				<desc_length>255</desc_length>
+				<desc_static_pos>no</desc_static_pos>
+			</autometa_product_meta>
+
+			<autometa_product_media>
+				<auto_fill>0</auto_fill>
+				<fill_type>just_empty</fill_type>
+				<image_label>name</image_label>
+				<attr_label>name</attr_label>
+				<separator> - </separator>
+				<length>255</length>
+				<static_pos>no</static_pos>
+			</autometa_product_media>
+
+			<autometa_category_meta>
+				<auto_fill>0</auto_fill>
+				<fill_type>just_empty</fill_type>
+				<meta_title>name</meta_title>
+				<attr_title>name</attr_title>
+				<separator> - </separator>
+				<length>255</length>
+				<static_pos>no</static_pos>
+
+				<key_auto_fill>0</key_auto_fill>
+				<key_fill_type>just_empty</key_fill_type>
+				<attr_key>name</attr_key>
+				<key_separator>,</key_separator>
+				<key_length>0</key_length>
+				<key_static_pos>no</key_static_pos>
+
+				<desc_auto_fill>0</desc_auto_fill>
+				<desc_fill_type>just_empty</desc_fill_type>
+				<meta_desc>description</meta_desc>
+				<attr_desc>description</attr_desc>
+				<desc_separator>, </desc_separator>
+				<desc_length>0</desc_length>
+				<desc_static_pos>no</desc_static_pos>
+			</autometa_category_meta>
+
+			<autometa_cms_meta>
+				<key_auto_fill>0</key_auto_fill>
+				<key_fill_type>just_empty</key_fill_type>
+				<attr_key>title,content_heading</attr_key>
+				<key_separator>,</key_separator>
+				<key_length>0</key_length>
+				<key_static_pos>no</key_static_pos>
+
+				<desc_auto_fill>0</desc_auto_fill>
+				<desc_fill_type>just_empty</desc_fill_type>
+				<attr_desc>content</attr_desc>
+				<desc_separator>, </desc_separator>
+				<desc_length>0</desc_length>
+				<desc_static_pos>no</desc_static_pos>
+			</autometa_cms_meta>
+		</codnitiveseo>
+	</default>
+</config>

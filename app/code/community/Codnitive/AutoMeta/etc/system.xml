@@ -1,0 +1,805 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CODNITIVE
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE_EULA.html.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.codnitive.com/en/terms-of-service-softwares/
+ * http://www.codnitive.com/fa/terms-of-service-softwares/
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   Codnitive
+ * @package    Codnitive_AutoMeta
+ * @author     Hassan Barza <support@codnitive.com>
+ * @copyright  Copyright (c) 2012 CODNITIVE Co. (http://www.codnitive.com)
+ * @license    http://www.codnitive.com/en/terms-of-service-softwares/ End User License Agreement (EULA 1.0)
+ */
+-->
+
+<config>	
+    <sections>
+        <codnitiveseo translate="label" module="autometa">
+            <label>SEO</label>
+            <tab>codall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <autometa translate="label, comment" module="autometa">
+                    <label>Auto Meta Data SEO</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_activation translate="label">
+                            <label>Activation</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_activation>
+                        <sernum translate="label">
+                            <label>Serial Number</label>
+                            <frontend_type>obscure</frontend_type>
+                            <validate>required-entry</validate>
+                            <backend_model>autometa/system_config_backend_encryptedserial</backend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sernum>
+                        <regcod translate="label">
+                            <label>Registration Code</label>
+                            <frontend_type>obscure</frontend_type>
+                            <validate>required-entry</validate>
+                            <backend_model>autometa/system_config_backend_encryptedregcode</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </regcod>
+                        <ownnam translate="label">
+                            <label>Full Name</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <backend_model>autometa/system_config_backend_name</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ownnam>
+                        <ownmai translate="label">
+                            <label>Email Address</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-email required-entry</validate>
+                            <backend_model>autometa/system_config_backend_email</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ownmai>
+                        
+                        <heading_config translate="label">
+                            <label>Configuration</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_config>
+                        <active translate="label,tooltip,comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>autometa/system_config_backend_cert</backend_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>This option affects to all Auto Meta Data settings (Products Meta Info, Products Media, Categories Meta Info and CMS Pages Meta Info).</tooltip>
+                            <comment>Note: Affects on all Auto Meta Data Settings</comment>
+                        </active>
+                    </fields>
+                </autometa>
+                
+                <autometa_product_meta>
+                    <label>Auto Meta Data SEO - Products Meta Info</label>
+                    <sort_order>21</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_title translate="label">
+                            <label>Meta Title</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_title>
+                        <auto_fill translate="label">
+                            <label>Auto Fill Meta Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_fill>
+                        <fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </fill_type>
+                        <meta_title translate="label">
+                            <label>Use as Meta Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_prodmetatitle</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </meta_title>
+                        <attr_title translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_prodattributeslist</source_model>
+                            <sort_order>131</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <meta_title>custom_attribute</meta_title>
+                            </depends>
+                        </attr_title>
+                        <separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator>
+                        <length translate="label,comment">
+                            <label>Length</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>autometa/system_config_backend_lengthvalidate</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>A number between 8 - 255</comment>
+                        </length>
+                        <static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_pos>
+                        <static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>151</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_content>
+                        
+                        <heading_key translate="label">
+                            <label>Meta Keywords</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_key>
+                        <key_auto_fill translate="label">
+                            <label>Auto Fill Meta Keywords</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_auto_fill>
+                        <key_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </key_fill_type>
+                        <attr_key translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_prodattributeslist</source_model>
+                            <sort_order>231</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </attr_key>
+                        <key_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>232</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_separator>
+                        <key_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_pos>
+                        <key_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>251</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_content>
+                        
+                        <heading_desc translate="label">
+                            <label>Meta Description</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_desc>
+                        <desc_auto_fill translate="label">
+                            <label>Auto Fill Meta Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_auto_fill>
+                        <desc_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </desc_fill_type>
+                        <meta_desc translate="label">
+                            <label>Use as Meta Keywords</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_prodmetadesc</source_model>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </meta_desc>
+                        <attr_desc translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_prodattributeslist</source_model>
+                            <sort_order>331</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <meta_desc>custom_attribute</meta_desc>
+                            </depends>
+                        </attr_desc>
+                        <desc_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>332</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_separator>
+                        <desc_length translate="label,comment">
+                            <label>Length</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>autometa/system_config_backend_lengthvalidate</backend_model>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>A number between 8 - 255</comment>
+                        </desc_length>
+                        <desc_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_pos>
+                        <desc_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>351</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_content>
+                    </fields>
+                </autometa_product_meta>
+                
+                <autometa_product_media>
+                    <label>Auto Meta Data SEO - Products Media</label>
+                    <sort_order>22</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <auto_fill translate="label">
+                            <label>Auto Fill Images Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_fill>
+                        <fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </fill_type>
+                        <image_label translate="label">
+                            <label>Use as Image Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_imagelabel</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </image_label>
+                        <attr_label translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_prodattributeslist</source_model>
+                            <sort_order>131</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <image_label>custom_attribute</image_label>
+                            </depends>
+                        </attr_label>
+                        <separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator>
+                        <length translate="label,comment">
+                            <label>Length</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>autometa/system_config_backend_lengthvalidate</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>A number between 8 - 255</comment>
+                        </length>
+                        <static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_pos>
+                        <static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>151</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_content>
+                    </fields>
+                </autometa_product_media>
+                
+                <autometa_category_meta>
+                    <label>Auto Meta Data SEO - Category Meta Data</label>
+                    <sort_order>23</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_title translate="label">
+                            <label>Meta Title</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_title>
+                        <auto_fill translate="label">
+                            <label>Auto Fill Meta Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_fill>
+                        <fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </fill_type>
+                        <meta_title translate="label">
+                            <label>Use as Meta Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_catmetatitle</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </meta_title>
+                        <attr_title translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_catattributeslist</source_model>
+                            <sort_order>131</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <meta_title>custom_attribute</meta_title>
+                            </depends>
+                        </attr_title>
+                        <separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator>
+                        <length translate="label,comment">
+                            <label>Length</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>autometa/system_config_backend_lengthvalidate</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>A number between 8 - 255</comment>
+                        </length>
+                        <static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_pos>
+                        <static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>151</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </static_content>
+                        
+                        <key_heading_title translate="label">
+                            <label>Meta Keywords</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_heading_title>
+                        <key_auto_fill translate="label">
+                            <label>Auto Fill Meta Keywords</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_auto_fill>
+                        <key_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </key_fill_type>
+                        <attr_key translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_catattributeslist</source_model>
+                            <sort_order>231</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </attr_key>
+                        <key_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>232</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_separator>
+                        <key_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_pos>
+                        <key_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>251</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_content>
+                        
+                        <desc_heading_title translate="label">
+                            <label>Meta Description</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_heading_title>
+                        <desc_auto_fill translate="label">
+                            <label>Auto Fill Meta Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_auto_fill>
+                        <desc_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </desc_fill_type>
+                        <meta_desc translate="label">
+                            <label>Use as Meta Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_catmetadesc</source_model>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </meta_desc>
+                        <attr_desc translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_catattributeslist</source_model>
+                            <sort_order>331</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <meta_desc>custom_attribute</meta_desc>
+                            </depends>
+                        </attr_desc>
+                        <desc_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>332</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_separator>
+                        <desc_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_pos>
+                        <desc_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>351</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_content>
+                    </fields>
+                </autometa_category_meta>
+                
+                <autometa_cms_meta>
+                    <label>Auto Meta Data SEO - CMS Page Meta Data</label>
+                    <sort_order>24</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <key_heading_title translate="label">
+                            <label>Meta Keywords</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_heading_title>
+                        <key_auto_fill translate="label">
+                            <label>Auto Fill Meta Keywords</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_auto_fill>
+                        <key_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </key_fill_type>
+                        <attr_key translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_cmsattributeslist</source_model>
+                            <sort_order>231</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </attr_key>
+                        <key_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>232</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_separator>
+                        <key_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_pos>
+                        <key_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>251</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key_static_content>
+                        
+                        <desc_heading_title translate="label">
+                            <label>Meta Description</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_heading_title>
+                        <desc_auto_fill translate="label">
+                            <label>Auto Fill Meta Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_auto_fill>
+                        <desc_fill_type translate="label,comment">
+                            <label>Fill Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_filltype</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Note: "Always"; replaces current value.</comment>
+                        </desc_fill_type>
+                        <attr_desc translate="label">
+                            <label>Attributes to Use</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>autometa/system_config_source_cmsattributeslist</source_model>
+                            <sort_order>331</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </attr_desc>
+                        <desc_separator translate="label">
+                            <label>Separator</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>332</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_separator>
+                        <desc_static_pos translate="label">
+                            <label>Add Static Content</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>autometa/system_config_source_staticpos</source_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_pos>
+                        <desc_static_content translate="label,comment">
+                            <label>Static Content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>351</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </desc_static_content>
+                    </fields>
+                </autometa_cms_meta>
+            </groups>
+        </codnitiveseo>
+    </sections>
+</config>
